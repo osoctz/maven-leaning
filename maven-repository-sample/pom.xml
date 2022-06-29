@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>cn.metaq.example</groupId>
+  <artifactId>maven-repository-sample</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <!-- pom文件中设置的远程仓库 -->
+  <repositories>
+    <repository>
+      <id>nexus-maven-pom-repository</id>
+      <url>http://maven.oschina.net/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <!-- pom文件中profile设置的远程仓库 -->
+  <profiles>
+    <profile>
+      <id>profile-test</id>
+      <activation>
+        <!-- 为方便测试此处设置自动激活 -->
+<!--        <activeByDefault>true</activeByDefault>-->
+      </activation>
+      <repositories>
+        <repository>
+          <id>nexus-maven-pom-profile</id>
+          <url>https://maven.aliyun.com/repository/public</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.78</version>
+    </dependency>
+  </dependencies>
+</project>
